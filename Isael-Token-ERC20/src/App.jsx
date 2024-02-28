@@ -1,16 +1,18 @@
-import { Header, Footer} from "./Components/ui/layouts"
+import { ConnectKitProvider } from 'connectkit'
+import { WagmiConfig } from 'wagmi'
+import { AppLayout } from './components/ui/layouts'
+import { config } from './config/wagmi'
+import { Home } from './pages'
 
 function App() {
   return (
-    <>
-      <Header />
-      <h1 class="text-3xl font-bold underline">
-      Hello world!
-      </h1>
-    <Footer />
-    </>
-
-
+    <WagmiConfig config={config}>
+      <ConnectKitProvider mode="light">
+        <AppLayout>
+          <Home />
+        </AppLayout>
+      </ConnectKitProvider>
+    </WagmiConfig>
   )
 }
 
